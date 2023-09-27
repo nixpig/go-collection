@@ -1,23 +1,17 @@
 export const insertionSort = <T>(arr: T[]): T[] => {
-  const N = arr.length;
+  outer: for (let i = 1; i < arr.length; ++i) {
+    const currentItem = arr[i];
 
-  let current: T;
-
-  let i = 1;
-  let j: number;
-
-  while (i < N) {
-    current = arr[i];
-
-    j = i - 1;
-
-    while (j >= 0 && arr[j] > current) {
-      arr[j + 1] = arr[j];
-      j = j - 1;
+    inner: for (let j = i - 1; j >= 0; --j) {
+      if (currentItem >= arr[j]) {
+        arr[j + 1] = currentItem;
+        continue outer;
+      } else {
+        arr[j + 1] = arr[j];
+        arr[j] = currentItem;
+        continue inner;
+      }
     }
-
-    arr[j + 1] = current;
-    i = i + 1;
   }
 
   return arr;

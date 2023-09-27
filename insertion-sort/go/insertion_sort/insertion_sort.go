@@ -1,25 +1,21 @@
 package insertion_sort
 
 func InsertionSort(arr []byte) []byte {
-	var current byte
-	var j int
+outer:
+	for i := 1; i < len(arr); i++ {
+		currentItem := arr[i]
 
-	i := 1
-
-	for i < len(arr) {
-		current = arr[i]
-
-		j = i - 1
-
-		for j >= 0 && arr[j] > current {
-			arr[j+1] = arr[j]
-
-			j -= 1
+	inner:
+		for j := i - 1; j >= 0; j-- {
+			if currentItem >= arr[j] {
+				arr[j+1] = currentItem
+				continue outer
+			} else {
+				arr[j+1] = arr[j]
+				arr[j] = currentItem
+				continue inner
+			}
 		}
-
-		arr[j+1] = current
-
-		i += 1
 	}
 
 	return arr
