@@ -21,5 +21,6 @@ func InsertionSort(arr []byte) []byte {
 
 		i += 1
 	}
+
 	return arr
 }
