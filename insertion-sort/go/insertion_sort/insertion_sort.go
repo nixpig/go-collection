@@ -1,6 +1,6 @@
 package insertion_sort
 
-func InsertionSort(arr []byte) []byte {
+func InsertionSort(arr []int) []int {
 outer:
 	for i := 1; i < len(arr); i++ {
 		currentItem := arr[i]

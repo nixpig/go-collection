@@ -1,18 +1,18 @@
 package insertion_sort
 
 import (
-	"bytes"
+	"reflect"
 	"testing"
 )
 
 func TestInsertionSort(t *testing.T) {
-	unsorted := []byte{23, 7, 42, 9, 69}
+	unsorted := []int{23, 7, 42, 9, 69}
 
 	got := InsertionSort(unsorted)
 
-	want := []byte{7, 9, 23, 42, 69}
+	want := []int{7, 9, 23, 42, 69}
 
-	if !bytes.Equal(got, want) {
+	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got %q, wanted %q", got, want)
 	}
 }
