@@ -23,7 +23,6 @@ fn insertion_sort(arr: &mut Vec<usize>) -> &Vec<usize> {
 #[test]
 fn test_insertion_sort() {
     let mut unsorted: Vec<usize> = vec![23, 13, 7, 69, 42];
-    println!("{:?}", unsorted);
     let sorted = insertion_sort(&mut unsorted);
 
     let expect: Vec<usize> = vec![7, 13, 23, 42, 69];
