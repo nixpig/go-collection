@@ -1,7 +1,7 @@
 export const binarySearch = <T>(arr: T[], target: T): number => {
   let indexLow = 0;
   let indexHigh = arr.length - 1;
-  let indexMid = indexLow;
+  let indexMid: number;
 
   while (indexLow <= indexHigh) {
     indexMid = Math.floor((indexHigh + indexLow) / 2);

@@ -11,10 +11,10 @@ func main() {
 func BinarySearch(arr []int, target int) int {
 	indexHigh := len(arr) - 1
 	indexLow := 0
-	indexMid := indexLow
+	var indexMid int
 
 	for indexLow < indexHigh {
-		indexMid = int(math.Floor(float64(indexHigh+indexMid) / 2))
+		indexMid = int(math.Floor(float64(indexHigh+indexLow) / 2))
 
 		if arr[indexMid] == target {
 			return indexMid
