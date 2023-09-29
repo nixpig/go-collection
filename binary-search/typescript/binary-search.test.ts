@@ -12,5 +12,8 @@ describe("binarySearch", () => {
     expect(binarySearch<number>(numbers, 0)).toBe(-1);
     expect(binarySearch<string>(strings, "r")).toBe(1);
     expect(binarySearch<string>(strings, "b")).toBe(-1);
+    expect(
+      binarySearch<number>([1, 7, 23, 42, 75, 116, 794, 800, 1099], 1200)
+    ).toBe(-1);
   });
 });

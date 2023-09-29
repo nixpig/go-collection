@@ -11,7 +11,7 @@ func main() {
 func BinarySearch(arr []int, target int) int {
 	indexHigh := len(arr) - 1
 	indexLow := 0
-	var indexMid int
+	indexMid := indexLow
 
 	for indexLow < indexHigh {
 		indexMid = int(math.Floor(float64(indexHigh+indexMid) / 2))
