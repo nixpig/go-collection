@@ -6,20 +6,18 @@ fn main() {
 fn binary_search(arr: Vec<isize>, target: isize) -> isize {
     let mut index_high = arr.len() as isize - 1;
     let mut index_low: isize = 0;
-    let mut index_mid: isize;
 
     while index_low <= index_high {
-        index_mid = (((index_high + index_low) / 2) as f64).floor() as isize;
+        let index_mid = (((index_high + index_low) / 2) as f64).floor() as isize;
+        let current_value = arr[index_mid as usize];
 
-        if arr[index_mid as usize] == target {
+        if current_value == target {
             return index_mid;
         }
 
-        if arr[index_mid as usize] > target {
+        if current_value > target {
             index_high = index_mid - 1;
-        }
-
-        if arr[index_mid as usize] < target {
+        } else {
             index_low = index_mid + 1;
         }
     }
