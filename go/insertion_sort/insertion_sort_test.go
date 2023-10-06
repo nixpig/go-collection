@@ -1,11 +1,13 @@
-package insertion_sort_test
+package insertion_sort
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 )
 
 func TestInsertionSort(t *testing.T) {
+	fmt.Println("Testing Insertion Sort")
 	unsorted := []int{23, 7, 42, 9, 69}
 
 	got := InsertionSort(unsorted)

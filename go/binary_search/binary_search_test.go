@@ -1,8 +1,12 @@
-package binary_search_test
+package binary_search
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestBinarySearch_UpperHalf(t *testing.T) {
+	fmt.Println("Testing Binary Search")
 	arr := []int{1, 7, 23, 42, 75, 116, 794, 800, 1099}
 
 	got := BinarySearch(arr, 800)
@@ -14,6 +18,7 @@ func TestBinarySearch_UpperHalf(t *testing.T) {
 }
 
 func TestBinarySearch_LowerHalf(t *testing.T) {
+	fmt.Println("Testing Binary Search Lower Half")
 	arr := []int{1, 7, 23, 42, 75, 116, 794, 800, 1099}
 
 	got := BinarySearch(arr, 23)
@@ -25,6 +30,7 @@ func TestBinarySearch_LowerHalf(t *testing.T) {
 }
 
 func TestBinarySearch_MidPoint(t *testing.T) {
+	fmt.Println("Testing Binary Search Midpoint")
 	arr := []int{1, 7, 23, 42, 75, 116, 794, 800, 1099}
 
 	got := BinarySearch(arr, 75)
@@ -36,6 +42,7 @@ func TestBinarySearch_MidPoint(t *testing.T) {
 }
 
 func TestBinarySearch_OutOfBounds_Upper(t *testing.T) {
+	fmt.Println("Testing Binary Search Out of Bounds Upper")
 	arr := []int{1, 7, 23, 42, 75, 116, 794, 800, 1099}
 
 	got := BinarySearch(arr, 1200)
@@ -47,6 +54,7 @@ func TestBinarySearch_OutOfBounds_Upper(t *testing.T) {
 }
 
 func TestBinarySearch_OutOfBounds_Lower(t *testing.T) {
+	fmt.Println("Testing Binary Search Out of Bounds Lower")
 	arr := []int{1, 7, 23, 42, 75, 116, 794, 800, 1099}
 
 	got := BinarySearch(arr, -23)
