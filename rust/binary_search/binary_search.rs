@@ -1,9 +1,4 @@
-fn main() {
-    let res = binary_search(vec![1, 7, 23, 42, 75, 116, 794, 800, 1099], 23);
-    println!("Found: {}", res)
-}
-
-fn binary_search(arr: Vec<isize>, target: isize) -> isize {
+pub fn binary_search(arr: Vec<isize>, target: isize) -> isize {
     let mut index_high = arr.len() as isize - 1;
     let mut index_low: isize = 0;
 

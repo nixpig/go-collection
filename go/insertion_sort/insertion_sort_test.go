@@ -1,4 +1,4 @@
-package insertion_sort
+package insertion_sort_test
 
 import (
 	"reflect"

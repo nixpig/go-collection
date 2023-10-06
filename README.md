@@ -8,14 +8,14 @@ I've never written Go or Rust before this, so trying to translate the Python-esq
 
 ### Insertion sort
 
-- TypeScript - [test](insertion-sort/typescript/insertion-sort.test.ts) - [solution](insertion-sort/typescript/insertion-sort.ts)
-- Go - [test](insertion-sort/go/insertion_sort/insertion_sort_test.go) - [solution](insertion-sort/go/insertion_sort/insertion_sort.go)
-- Rust - [test](insertion-sort/rust/src/main.rs#L22) - [solution](insertion-sort/rust/src/main.rs)
+- TypeScript - [test](typescript/src/insertion-sort.test.ts) - [solution](typescript/src/insertion-sort.ts)
+- Go - [test](go/insertion_sort/insertion_sort_test.go) - [solution](go/insertion_sort/insertion_sort.go)
+- Rust - [test](rust/insertion_sort/insertion_sort.rs#L22) - [solution](rust/insertion_sort/insertion_sort.rs)
 
 ## Chapter 2: Binary Search
 
 ### Binary search
 
-- TypeScript - [test](binary-search/typescript/binary-search.test.ts) - [solution](binary-search/typescript/binary-search.ts)
-- Go - [test](binary-search/go/binary_search/binary_search_test.go) - [solution](binary-search/go/binary_search/binary_search.go)
-- Rust - [test](binary-search/rust/src/main.rs#L27) - [solution](binary-search/rust/src/main.rs)
+- TypeScript - [test](typescript/src/binary-search.test.ts) - [solution](typescript/src/binary-search.ts)
+- Go - [test](go/binary_search/binary_search_test.go) - [solution](go/binary_search/binary_search.go)
+- Rust - [test](rust/binary_search/binary_search.rs#L27) - [solution](rust/binary_search/binary_search.rs)
