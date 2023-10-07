@@ -14,6 +14,7 @@ type LinkedList[T any] struct {
 
 func (lst *LinkedList[T]) InsertAtTail(newValue T) {
 	if lst.tail == nil {
+		fmt.Println("TAIL IS NIL")
 		lst.head = &LinkedListNode[T]{
 			value: newValue,
 		}
@@ -21,6 +22,7 @@ func (lst *LinkedList[T]) InsertAtTail(newValue T) {
 		lst.tail = lst.head
 
 	} else {
+		println("TAIL IS NOT NIL")
 		lst.tail.next = &LinkedListNode[T]{
 			value: newValue,
 		}
@@ -34,6 +36,8 @@ func (lst *LinkedList[T]) InsertAtHead(newValue T) {
 		lst.head = &LinkedListNode[T]{
 			value: newValue,
 		}
+
+		lst.tail = lst.head
 	} else {
 		newHead := &LinkedListNode[T]{
 			value: newValue,
