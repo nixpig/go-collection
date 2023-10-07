@@ -5,6 +5,21 @@ import (
 	"testing"
 )
 
+func lookupAndExpect[T comparable](lst LinkedList[T], position int, expectedValue T, t *testing.T) {
+	lu, err := lst.Lookup(position)
+	if err != nil {
+		t.Errorf("expected not to error, but got: %v", err)
+		return
+	}
+
+	fmt.Println(lu, expectedValue)
+
+	if lu != expectedValue {
+		t.Errorf("expected %v, but got %v", expectedValue, lu)
+		return
+	}
+}
+
 func TestLinkedList(t *testing.T) {
 	lst := LinkedList[int]{}
 
@@ -13,78 +28,30 @@ func TestLinkedList(t *testing.T) {
 	lst.InsertAtHead(42)
 	lst.InsertAtHead(69)
 
-	fmt.Println("lookup")
+	fmt.Println("lookup within bounds")
 
-	lu, err := lst.Lookup(0)
-	if err != nil {
-		t.Errorf("expected not to error, but got %v", lu)
-	}
-	if lu != 69 {
-		t.Errorf("expected 69, but got %v", lu)
-	}
+	lookupAndExpect[int](lst, 0, 69, t)
+	lookupAndExpect[int](lst, 1, 42, t)
+	lookupAndExpect[int](lst, 2, 23, t)
 
-	lu, err = lst.Lookup(1)
-	if err != nil {
-		t.Errorf("expected not to error, but got %v", lu)
-	}
-	if lu != 42 {
-		t.Errorf("expected 42, but got %v", lu)
-	}
-
-	lu, err = lst.Lookup(2)
-	if err != nil {
-		t.Errorf("expected not to error, but got %v", lu)
-	}
-	if lu != 23 {
-		t.Errorf("expected 23, but got %v", lu)
-	}
-
-	lu, err = lst.Lookup(3)
+	fmt.Println("lookup out of bounds")
+	lu, err := lst.Lookup(3)
 	if err != nil {
 	} else {
 		t.Errorf("expected to error, but got %v", lu)
 	}
 
 	fmt.Println("insert at tail")
-
 	lst.InsertAtTail(420)
-
-	lu, err = lst.Lookup(3)
-	if err != nil {
-		t.Errorf("expected not to error, but got %v", lu)
-	}
-	if lu != 420 {
-		t.Errorf("expected 420, but got %v", lu)
-	}
+	lookupAndExpect[int](lst, 3, 420, t)
 
 	fmt.Println("insert at position")
-
 	lst.InsertAtPosition(2, 13)
-	lu, err = lst.Lookup(2)
-	if err != nil {
-		t.Errorf("expected not to error, but got %v", lu)
-	}
-	if lu != 13 {
-		t.Errorf("expected 13, but got %v", lu)
-	}
-
-	lu, err = lst.Lookup(3)
-	if err != nil {
-		t.Errorf("expected not to error, but got %v", lu)
-	}
-	if lu != 23 {
-		t.Errorf("expected 23, but got %v", lu)
-	}
+	lookupAndExpect[int](lst, 2, 13, t)
+	lookupAndExpect[int](lst, 3, 23, t)
 
 	fmt.Println("delete at position")
 
 	lst.DeleteAtPosition(3)
-	lu, err = lst.Lookup(3)
-	if err != nil {
-		t.Errorf("expected not to error, but got %v", lu)
-	}
-	if lu != 420 {
-		t.Errorf("expected 420, but got %v", lu)
-	}
-
+	lookupAndExpect[int](lst, 3, 420, t)
 }
