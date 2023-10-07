@@ -57,4 +57,20 @@ func main() {
 	}
 	fmt.Println("3:", val)
 
+	err = lst.DeleteAtPosition(2)
+	val, err = lst.Lookup(2)
+	if err != nil {
+		fmt.Println("error:", err)
+		return
+	}
+	fmt.Println("2:", val)
+
+	err = lst.DeleteAtPosition(0)
+	val, err = lst.Lookup(2)
+	if err != nil {
+		fmt.Println("error:", err)
+		return
+	}
+	fmt.Println("2:", val)
+
 }

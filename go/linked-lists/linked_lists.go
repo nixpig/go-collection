@@ -2,8 +2,6 @@ package linked_list
 
 import "fmt"
 
-// import "fmt"
-
 type LinkedListNode[T any] struct {
 	value T
 	next  *LinkedListNode[T]
@@ -68,6 +66,32 @@ func (lst *LinkedList[T]) InsertAtPosition(position int, value T) error {
 	}
 
 	current.next = &newNode
+
+	return nil
+}
+
+func (lst *LinkedList[T]) DeleteAtPosition(position int) error {
+	if lst.head == nil {
+		return fmt.Errorf("No head at start of list")
+	}
+
+	if position == 0 {
+		newHead := lst.head.next
+		lst.head = newHead
+		return nil
+	}
+
+	current := lst.head
+	for i := 0; i < position-1; i++ {
+		if current.next != nil {
+			current = current.next
+		} else {
+			return fmt.Errorf("Value '%d' provided for 'position' exceeds the length of the list", position)
+		}
+	}
+
+	newHead := lst.head.next
+	lst.head = newHead
 
 	return nil
 }
