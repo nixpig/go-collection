@@ -9,14 +9,8 @@ func lookupAndExpect[T comparable](lst LinkedList[T], position int, expectedValu
 	lu, err := lst.Lookup(position)
 	if err != nil {
 		t.Errorf("expected not to error, but got: %v", err)
-		return
-	}
-
-	fmt.Println(lu, expectedValue)
-
-	if lu != expectedValue {
+	} else if lu != expectedValue {
 		t.Errorf("expected %v, but got %v", expectedValue, lu)
-		return
 	}
 }
 
