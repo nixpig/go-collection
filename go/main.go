@@ -3,74 +3,52 @@ package main
 import (
 	"fmt"
 
-	linked_list "github.com/nixpig/datastructures-the-fun-way/go/linked-lists"
+	array_stack "github.com/nixpig/datastructures-the-fun-way/go/array-stack"
 )
 
 func main() {
-	lst := linked_list.LinkedList[int]{}
+	ask := array_stack.ArrayStack[int]{}
 
-	lst.InsertAtTail(42)
-	lst.InsertAtTail(69)
-	lst.InsertAtTail(420)
+	ask.Push(23)
+	ask.Push(69)
+	ask.Push(42)
+	ask.Push(13)
 
-	val, err := lst.Lookup(1)
+	var item int
+	var err error
+
+	item, err = ask.Pop()
 	if err != nil {
 		fmt.Println("error:", err)
-		return
+	} else {
+		fmt.Println("value:", item)
 	}
 
-	fmt.Println(val)
-
-	lst.InsertAtHead(23)
-	val, err = lst.Lookup(0)
+	item, err = ask.Pop()
 	if err != nil {
 		fmt.Println("error:", err)
-		return
+	} else {
+		fmt.Println("value:", item)
 	}
 
-	fmt.Println(val)
-
-	err = lst.InsertAtPosition(2, 111)
+	item, err = ask.Pop()
 	if err != nil {
 		fmt.Println("error:", err)
-		return
+	} else {
+		fmt.Println("value:", item)
 	}
 
-	val, err = lst.Lookup(1)
+	item, err = ask.Pop()
 	if err != nil {
 		fmt.Println("error:", err)
-		return
+	} else {
+		fmt.Println("value:", item)
 	}
-	fmt.Println("1:", val)
 
-	val, err = lst.Lookup(2)
+	item, err = ask.Pop()
 	if err != nil {
 		fmt.Println("error:", err)
-		return
+	} else {
+		fmt.Println("value:", item)
 	}
-	fmt.Println("2:", val)
-
-	val, err = lst.Lookup(3)
-	if err != nil {
-		fmt.Println("error:", err)
-		return
-	}
-	fmt.Println("3:", val)
-
-	err = lst.DeleteAtPosition(2)
-	val, err = lst.Lookup(2)
-	if err != nil {
-		fmt.Println("error:", err)
-		return
-	}
-	fmt.Println("2:", val)
-
-	err = lst.DeleteAtPosition(0)
-	val, err = lst.Lookup(2)
-	if err != nil {
-		fmt.Println("error:", err)
-		return
-	}
-	fmt.Println("2:", val)
-
 }
