@@ -27,3 +27,11 @@ func (s *ArrayStack[T]) Pop() (T, error) {
 		return r.value, fmt.Errorf("nothing on stack to pop")
 	}
 }
+
+func (s *ArrayStack[T]) Peek() (T, error) {
+	if len(s.stack) > 0 {
+		return s.stack[len(s.stack)-1].value, nil
+	}
+
+	return arrayStackItem[T]{}.value, fmt.Errorf("no items in the stack to peek at")
+}
