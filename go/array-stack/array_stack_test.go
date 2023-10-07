@@ -6,6 +6,17 @@ import (
 	array_stack "github.com/nixpig/datastructures-the-fun-way/go/array-stack"
 )
 
+func popAndAssert[T comparable](stack *array_stack.ArrayStack[T], expectedValue T, t *testing.T) {
+	item, err := stack.Pop()
+	if err != nil {
+		t.Errorf("expected not to error, instead received: %v", err)
+	} else {
+		if item != expectedValue {
+			t.Errorf("expected to receive %v, instead received: %v", expectedValue, item)
+		}
+	}
+}
+
 func TestArrayStack(t *testing.T) {
 	ask := array_stack.ArrayStack[int]{}
 
@@ -17,41 +28,13 @@ func TestArrayStack(t *testing.T) {
 	var item int
 	var err error
 
-	item, err = ask.Pop()
-	if err != nil {
-		t.Errorf("expected not to error, instead received: %v", err)
-	} else {
-		if item != 13 {
-			t.Errorf("expected to receive 13, instead received: %v", item)
-		}
-	}
+	popAndAssert[int](&ask, 13, t)
+	popAndAssert[int](&ask, 42, t)
 
-	item, err = ask.Pop()
-	if err != nil {
-		t.Errorf("expected not to error, instead received: %v", err)
-	} else {
-		if item != 42 {
-			t.Errorf("expected to receive 42, instead received: %v", item)
-		}
-	}
-
-	item, err = ask.Pop()
-	if err != nil {
-		t.Errorf("expected not to error, instead received: %v", err)
-	} else {
-		if item != 69 {
-			t.Errorf("expected to receive 69, instead received: %v", item)
-		}
-	}
-
-	item, err = ask.Pop()
-	if err != nil {
-		t.Errorf("expected not to error, instead received: %v", err)
-	} else {
-		if item != 23 {
-			t.Errorf("expected to receive 23, instead received: %v", item)
-		}
-	}
+	ask.Push(666)
+	popAndAssert[int](&ask, 666, t)
+	popAndAssert[int](&ask, 69, t)
+	popAndAssert[int](&ask, 23, t)
 
 	item, err = ask.Pop()
 	if err != nil {
