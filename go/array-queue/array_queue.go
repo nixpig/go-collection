@@ -3,26 +3,22 @@ package array_queue
 import "fmt"
 
 type ArrayQueue[T any] struct {
-	queue []arrayQueueItem[T]
+	queue []item[T]
 }
 
-type arrayQueueItem[T any] struct {
-	value T
-}
+type item[T any] any
 
 func (q *ArrayQueue[T]) Enqueue(item T) {
-	q.queue = append(q.queue, arrayQueueItem[T]{value: item})
+	q.queue = append(q.queue, item)
 }
 
-func (q *ArrayQueue[T]) Dequeue() (T, error) {
+func (q *ArrayQueue[T]) Dequeue() (item[T], error) {
 	if len(q.queue) > 0 {
-		item := q.queue[0]
+		value := q.queue[0]
 		q.queue = q.queue[1:]
 
-		return item.value, nil
+		return value, nil
 	}
 
-	return arrayQueueItem[T]{}.value, fmt.Errorf("No items in the queue to dequeue")
+	return nil, fmt.Errorf("No items in the queue to dequeue")
 }
-
-// also build a circular queue (ring buffer)

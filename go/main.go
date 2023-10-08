@@ -3,52 +3,71 @@ package main
 import (
 	"fmt"
 
-	array_stack "github.com/nixpig/datastructures-the-fun-way/go/array-stack"
+	ring_buffer "github.com/nixpig/datastructures-the-fun-way/go/ring-buffer"
 )
 
 func main() {
-	ask := array_stack.ArrayStack[int]{}
+	rb := ring_buffer.NewRingBuffer[int](4)
 
-	ask.Push(23)
-	ask.Push(69)
-	ask.Push(42)
-	ask.Push(13)
+	rb.Enqueue(23)
 
-	var item int
-	var err error
+	rb.Enqueue(42)
 
-	item, err = ask.Pop()
+	rb.Enqueue(69)
+
+	rb.Enqueue(13)
+
+	// isFull, err = rb.Enqueue(7)
+	// if err != nil {
+	// 	fmt.Println(err)
+	// } else {
+	// 	fmt.Println(isFull)
+	// }
+	//
+	// isFull, err = rb.Enqueue(666)
+	// if err != nil {
+	// 	fmt.Println(err)
+	// } else {
+	// 	fmt.Println(isFull)
+	// }
+
+	value, err := rb.Dequeue()
 	if err != nil {
-		fmt.Println("error:", err)
+		fmt.Println(err)
 	} else {
-		fmt.Println("value:", item)
+		fmt.Println(value)
 	}
 
-	item, err = ask.Pop()
+	value, err = rb.Dequeue()
 	if err != nil {
-		fmt.Println("error:", err)
+		fmt.Println(err)
 	} else {
-		fmt.Println("value:", item)
+		fmt.Println(value)
 	}
 
-	item, err = ask.Pop()
+	rb.Enqueue(666)
+
+	rb.Enqueue(777)
+
+	value, err = rb.Dequeue()
 	if err != nil {
-		fmt.Println("error:", err)
+		fmt.Println(err)
 	} else {
-		fmt.Println("value:", item)
+		fmt.Println(value)
 	}
 
-	item, err = ask.Pop()
+	value, err = rb.Dequeue()
 	if err != nil {
-		fmt.Println("error:", err)
+		fmt.Println(err)
 	} else {
-		fmt.Println("value:", item)
+		fmt.Println(value)
 	}
 
-	item, err = ask.Pop()
+	value, err = rb.Dequeue()
 	if err != nil {
-		fmt.Println("error:", err)
+		fmt.Println(err)
 	} else {
-		fmt.Println("value:", item)
+		fmt.Println(value)
 	}
+
 }
