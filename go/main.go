@@ -3,71 +3,30 @@ package main
 import (
 	"fmt"
 
-	ring_buffer "github.com/nixpig/datastructures-the-fun-way/go/ring-buffer"
+	binary_search_tree "github.com/nixpig/datastructures-the-fun-way/go/binary-search-tree"
 )
 
 func main() {
-	rb := ring_buffer.NewRingBuffer[int](4)
+	tree := binary_search_tree.BinarySearchTree{}
 
-	rb.Enqueue(23)
+	tree.Insert(13)
+	tree.Insert(7)
+	tree.Insert(9)
+	tree.Insert(23)
+	tree.Insert(1)
 
-	rb.Enqueue(42)
+	fmt.Println("---[[ Should find ]]------------------")
+	fmt.Println("find 23:", tree.Find(23))
+	fmt.Println("find 7:", tree.Find(7))
+	fmt.Println("find 13:", tree.Find(13))
+	fmt.Println("find 9:", tree.Find(9))
+	fmt.Println("find 1:", tree.Find(1))
 
-	rb.Enqueue(69)
+	fmt.Println("")
 
-	rb.Enqueue(13)
-
-	// isFull, err = rb.Enqueue(7)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// } else {
-	// 	fmt.Println(isFull)
-	// }
-	//
-	// isFull, err = rb.Enqueue(666)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// } else {
-	// 	fmt.Println(isFull)
-	// }
-
-	value, err := rb.Dequeue()
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println(value)
-	}
-
-	value, err = rb.Dequeue()
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println(value)
-	}
-
-	rb.Enqueue(666)
-
-	rb.Enqueue(777)
-
-	value, err = rb.Dequeue()
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println(value)
-	}
-
-	value, err = rb.Dequeue()
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println(value)
-	}
-
-	value, err = rb.Dequeue()
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println(value)
-	}
+	fmt.Println("---[[ Should not find ]]--------------")
+	fmt.Println("find 111:", tree.Find(111))
+	fmt.Println("find 0:", tree.Find(0))
+	fmt.Println("find -5:", tree.Find(-5))
 
 }
