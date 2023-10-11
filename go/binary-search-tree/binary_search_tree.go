@@ -1,9 +1,11 @@
 package binary_search_tree
 
-type binaryTreeValue int
+import "fmt"
+
+type BinarySearchInt int
 
 type TreeNode struct {
-	value  binaryTreeValue
+	value  BinarySearchInt
 	count  int
 	parent *TreeNode
 	left   *TreeNode
@@ -14,10 +16,10 @@ type BinarySearchTree struct {
 	root *TreeNode
 }
 
-func (tree *BinarySearchTree) Insert(newValue binaryTreeValue) {
-	var insert func(currentNode *TreeNode, newValue binaryTreeValue)
+func (tree *BinarySearchTree) Insert(newValue BinarySearchInt) {
+	var insert func(currentNode *TreeNode, newValue BinarySearchInt)
 
-	insert = func(currentNode *TreeNode, newValue binaryTreeValue) {
+	insert = func(currentNode *TreeNode, newValue BinarySearchInt) {
 		if currentNode == nil {
 			tree.root = &TreeNode{value: newValue, count: 1}
 			return
@@ -52,24 +54,28 @@ func (tree *BinarySearchTree) Insert(newValue binaryTreeValue) {
 	insert(tree.root, newValue)
 }
 
-func (tree *BinarySearchTree) Find(targetValue binaryTreeValue) *TreeNode {
-	var find func(currentNode *TreeNode, targetValue binaryTreeValue) *TreeNode
+func (tree *BinarySearchTree) Find(targetValue BinarySearchInt) *TreeNode {
+	var find func(currentNode *TreeNode, targetValue BinarySearchInt) *TreeNode
 
-	find = func(currentNode *TreeNode, targetValue binaryTreeValue) *TreeNode {
+	find = func(currentNode *TreeNode, targetValue BinarySearchInt) *TreeNode {
 
 		if currentNode == nil {
+			fmt.Println("   nil")
 			return nil
 		}
 
 		if targetValue == currentNode.value {
+			fmt.Println("   found")
 			return currentNode
 		}
 
 		if targetValue < currentNode.value && currentNode.left != nil {
+			fmt.Println("<- left")
 			return find(currentNode.left, targetValue)
 		}
 
 		if targetValue > currentNode.value && currentNode.right != nil {
+			fmt.Println("   right ->")
 			return find(currentNode.right, targetValue)
 		}
 
