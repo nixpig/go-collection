@@ -17,18 +17,26 @@ func main() {
 
 	fmt.Println("---[[ Should find ]]------------------")
 
-	fmt.Println("node:", tree.Find(29))
+	var removal binary_search_tree.BinarySearchInt = 81
+
+	node := tree.Find(removal)
+
+	fmt.Println("node:", node)
+
+	tree.Remove(node)
+
+	fmt.Println("")
+
+	fmt.Println("---[[ Should not find ]]--------------")
+	fmt.Println("node:", tree.Find(removal))
+
+	// fmt.Println("find 111:", tree.Find(111))
+	// fmt.Println("find 0:", tree.Find(0))
+	// fmt.Println("find -5:", tree.Find(-5))
 
 	// fmt.Println("find 7:", tree.Find(7))
 	// fmt.Println("find 13:", tree.Find(13))
 	// fmt.Println("find 9:", tree.Find(9))
 	// fmt.Println("find 1:", tree.Find(1))
-
-	fmt.Println("")
-
-	// fmt.Println("---[[ Should not find ]]--------------")
-	// fmt.Println("find 111:", tree.Find(111))
-	// fmt.Println("find 0:", tree.Find(0))
-	// fmt.Println("find -5:", tree.Find(-5))
 
 }
