@@ -51,3 +51,5 @@ I've never written Go or Rust before this, so trying to translate the Python-esq
 - Go - [test]() - [solution]()
 
 ## Chapter 5: Binary Search Trees
+
+- Go - [test](https://github.com/nixpig/data-structures-the-fun-way/blob/main/go/binary-search-tree/binary_search_tree_test.go) - [solution](https://github.com/nixpig/data-structures-the-fun-way/blob/main/go/binary-search-tree/binary_search_tree.go)
