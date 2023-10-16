@@ -1,9 +1,5 @@
 package trie
 
-import (
-// "fmt"
-)
-
 type Trie struct {
 	root *TrieNode
 }
@@ -38,28 +34,48 @@ func (trie *Trie) Insert(value string) {
 	trieNodeInsert(trie.root, value, 0)
 }
 
-func (trie *Trie) Search(target string) *TrieNode {
-	var trieNodeSearch func(currentNode *TrieNode, target string, index int) *TrieNode
+func (trie *Trie) Search(value string) *TrieNode {
+	var trieNodeSearch func(currentNode *TrieNode, value string, index int) *TrieNode
 
-	trieNodeSearch = func(currentNode *TrieNode, target string, index int) *TrieNode {
-		if index == len(target) {
-			if currentNode.isEntry == true {
+	trieNodeSearch = func(currentNode *TrieNode, value string, index int) *TrieNode {
+		if index == len(value) {
+			if currentNode.isEntry {
 				return currentNode
 			} else {
 				return nil
 			}
 		}
 
-		nextLetter := target[index]
+		nextLetter := value[index]
 		nextIndex := nextLetter - 'a'
 
 		if currentNode.children[nextIndex] == nil {
 			return nil
 		}
 
-		return trieNodeSearch(currentNode.children[nextIndex], target, index+1)
-
+		return trieNodeSearch(currentNode.children[nextIndex], value, index+1)
 	}
 
-	return trieNodeSearch(trie.root, target, 0)
+	return trieNodeSearch(trie.root, value, 0)
+}
+
+func (trie *Trie) Delete(value string) {
+	var trieNodeDelete func(currentNode *TrieNode, value string, index int)
+
+	trieNodeDelete = func(currentNode *TrieNode, value string, index int) {
+		if index == len(value) {
+			if currentNode.isEntry {
+				currentNode.isEntry = false
+			}
+		} else {
+			nextLetter := value[index]
+			nextIndex := nextLetter - 'a'
+
+			if currentNode.children[nextIndex] != nil {
+				trieNodeDelete(currentNode.children[nextIndex], value, index+1)
+			}
+		}
+	}
+
+	trieNodeDelete(trie.root, value, 0)
 }
