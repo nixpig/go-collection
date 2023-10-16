@@ -23,7 +23,7 @@ func assertFound(t *testing.T, trie *trie.Trie, value string, expect bool) {
 	t.Errorf("incorrect return result for: %s", value)
 }
 
-var words = []string{"foo", "bar", "fool", "barista", "foolish"}
+var words = []string{"foo", "bar", "orangutan", "fool", "barista", "foolish"}
 
 func TestTrie(t *testing.T) {
 
