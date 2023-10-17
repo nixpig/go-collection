@@ -6,6 +6,14 @@ import (
 
 type HeapNode struct {
 	priority int
+	aux      string
+}
+
+func NewHeapNode(priority int, aux string) *HeapNode {
+	return &HeapNode{
+		priority: priority,
+		aux:      aux,
+	}
 }
 
 type MaxHeap struct {
@@ -28,12 +36,12 @@ func (*MaxHeap) getRightChildIndex(index int) int {
 	return index*2 + 1
 }
 
-func (heap *MaxHeap) Insert(value int) {
+func (heap *MaxHeap) Insert(value HeapNode) {
 	if len(heap.data) == 0 {
 		heap.data = append(heap.data, nil)
 	}
 
-	heap.data = append(heap.data, &HeapNode{priority: value})
+	heap.data = append(heap.data, &value)
 
 	currentIndex := len(heap.data) - 1
 	parentIndex := heap.getParentIndex(currentIndex)

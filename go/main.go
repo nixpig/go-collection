@@ -9,7 +9,16 @@ import (
 func main() {
 	heap := max_heap.MaxHeap{}
 
-	values := []int{23, 42, 69, 13, 7, 132, 666, 500}
+	values := []max_heap.HeapNode{
+		*max_heap.NewHeapNode(23, "foo"),
+		*max_heap.NewHeapNode(42, "bar"),
+		*max_heap.NewHeapNode(69, "baz"),
+		*max_heap.NewHeapNode(13, "qux"),
+		*max_heap.NewHeapNode(7, "rot"),
+		*max_heap.NewHeapNode(132, "apple"),
+		*max_heap.NewHeapNode(666, "chimp"),
+		*max_heap.NewHeapNode(500, "cup"),
+	}
 
 	for _, value := range values {
 		heap.Insert(value)
