@@ -4,39 +4,39 @@ import (
 	"math"
 )
 
-type HeapNode struct {
+type HeapNode[T any] struct {
 	priority int
-	aux      string
+	aux      T
 }
 
-func NewHeapNode(priority int, aux string) *HeapNode {
-	return &HeapNode{
+func NewHeapNode[T any](priority int, aux T) *HeapNode[T] {
+	return &HeapNode[T]{
 		priority: priority,
 		aux:      aux,
 	}
 }
 
-type MaxHeap struct {
-	data []*HeapNode
+type MaxHeap[T any] struct {
+	data []*HeapNode[T]
 }
 
-func (heap *MaxHeap) GetLength() int {
+func (heap *MaxHeap[T]) GetLength() int {
 	return len(heap.data) - 1
 }
 
-func (*MaxHeap) getParentIndex(index int) int {
+func (*MaxHeap[T]) getParentIndex(index int) int {
 	return int(math.Floor(float64(index) / 2))
 }
 
-func (*MaxHeap) getLeftChildIndex(index int) int {
+func (*MaxHeap[T]) getLeftChildIndex(index int) int {
 	return index * 2
 }
 
-func (*MaxHeap) getRightChildIndex(index int) int {
+func (*MaxHeap[T]) getRightChildIndex(index int) int {
 	return index*2 + 1
 }
 
-func (heap *MaxHeap) Insert(value HeapNode) {
+func (heap *MaxHeap[T]) Insert(value HeapNode[T]) {
 	if len(heap.data) == 0 {
 		heap.data = append(heap.data, nil)
 	}
@@ -52,7 +52,7 @@ func (heap *MaxHeap) Insert(value HeapNode) {
 	}
 }
 
-func (heap *MaxHeap) RemoveMax() *HeapNode {
+func (heap *MaxHeap[T]) RemoveMax() *HeapNode[T] {
 	if heap.GetLength() == 0 {
 		return nil
 	}

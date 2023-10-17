@@ -7,9 +7,9 @@ import (
 )
 
 func main() {
-	heap := max_heap.MaxHeap{}
+	heap := max_heap.MaxHeap[string]{}
 
-	values := []max_heap.HeapNode{
+	values := []max_heap.HeapNode[string]{
 		*max_heap.NewHeapNode(23, "foo"),
 		*max_heap.NewHeapNode(42, "bar"),
 		*max_heap.NewHeapNode(69, "baz"),
