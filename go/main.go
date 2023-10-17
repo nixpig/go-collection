@@ -1,61 +1,35 @@
 package main
 
 import (
-	// "fmt"
-
 	"fmt"
 
-	"github.com/nixpig/datastructures-the-fun-way/go/trie"
+	"github.com/nixpig/datastructures-the-fun-way/go/max_heap"
 )
 
 func main() {
-	tr := trie.Trie{}
+	heap := max_heap.MaxHeap{}
 
-	words := []string{"foo", "bar", "fool", "barista", "foolish"}
+	values := []int{23, 42, 69, 13, 7, 132, 666, 500}
 
-	for _, word := range words {
-		tr.Insert(word)
+	for _, value := range values {
+		heap.Insert(value)
 	}
 
-	fmt.Println("---")
+	for i, v := range heap.Data {
+		fmt.Printf("%v: %v\n", i, v)
+	}
 
-	search := []string{"foo", "bar", "apple", "fool", "barista", "chimp", "foolish"}
+	for i, v := range heap.Data {
+		fmt.Printf("%v: %v\n", i, v)
+	}
 
-	for _, word := range search {
-		found := tr.Search(word)
-
-		if found != nil {
-			fmt.Println("found word in trie:", word)
+	for heap.GetLength() > 0 {
+		max := heap.RemoveMax()
+		if max != nil {
+			fmt.Println(*max)
 		} else {
-			fmt.Println("did not find word in trie:", word)
+			fmt.Println("no items left in heap")
 		}
-	}
 
-	fmt.Println("---")
-
-	remove := []string{"fool", "orangutan", "bar"}
-
-	for _, word := range remove {
-		found := tr.Search(word)
-
-		if found != nil {
-			fmt.Println("found word in trie:", word)
-		} else {
-			fmt.Println("did not find word in trie:", word)
-		}
-	}
-
-	for _, word := range remove {
-		tr.Delete(word)
-	}
-
-	for _, word := range remove {
-		found := tr.Search(word)
-
-		if found != nil {
-			fmt.Println("found word in trie:", word)
-		} else {
-			fmt.Println("did not find word in trie:", word)
-		}
 	}
 }
