@@ -15,18 +15,10 @@ func main() {
 		heap.Insert(value)
 	}
 
-	for i, v := range heap.Data {
-		fmt.Printf("%v: %v\n", i, v)
-	}
-
-	for i, v := range heap.Data {
-		fmt.Printf("%v: %v\n", i, v)
-	}
-
 	for heap.GetLength() > 0 {
 		max := heap.RemoveMax()
 		if max != nil {
-			fmt.Println(*max)
+			fmt.Println("max:", *max)
 		} else {
 			fmt.Println("no items left in heap")
 		}

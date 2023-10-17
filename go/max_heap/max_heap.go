@@ -9,11 +9,11 @@ type HeapNode struct {
 }
 
 type MaxHeap struct {
-	Data []*HeapNode
+	data []*HeapNode
 }
 
 func (heap *MaxHeap) GetLength() int {
-	return len(heap.Data) - 1
+	return len(heap.data) - 1
 }
 
 func (*MaxHeap) getParentIndex(index int) int {
@@ -29,17 +29,17 @@ func (*MaxHeap) getRightChildIndex(index int) int {
 }
 
 func (heap *MaxHeap) Insert(value int) {
-	if len(heap.Data) == 0 {
-		heap.Data = append(heap.Data, nil)
+	if len(heap.data) == 0 {
+		heap.data = append(heap.data, nil)
 	}
 
-	heap.Data = append(heap.Data, &HeapNode{priority: value})
+	heap.data = append(heap.data, &HeapNode{priority: value})
 
-	currentIndex := len(heap.Data) - 1
+	currentIndex := len(heap.data) - 1
 	parentIndex := heap.getParentIndex(currentIndex)
 
-	for parentIndex > 0 && heap.Data[parentIndex].priority < heap.Data[currentIndex].priority {
-		heap.Data[currentIndex], heap.Data[parentIndex] = heap.Data[parentIndex], heap.Data[currentIndex]
+	for parentIndex > 0 && heap.data[parentIndex].priority < heap.data[currentIndex].priority {
+		heap.data[currentIndex], heap.data[parentIndex] = heap.data[parentIndex], heap.data[currentIndex]
 		currentIndex, parentIndex = parentIndex, heap.getParentIndex(parentIndex)
 	}
 }
@@ -49,25 +49,25 @@ func (heap *MaxHeap) RemoveMax() *HeapNode {
 		return nil
 	}
 
-	heap.Data[1], heap.Data[len(heap.Data)-1] = heap.Data[len(heap.Data)-1], heap.Data[1]
+	heap.data[1], heap.data[len(heap.data)-1] = heap.data[len(heap.data)-1], heap.data[1]
 
-	max := heap.Data[len(heap.Data)-1]
-	heap.Data = heap.Data[:len(heap.Data)-1]
+	max := heap.data[len(heap.data)-1]
+	heap.data = heap.data[:len(heap.data)-1]
 
-	for i := 1; i < len(heap.Data); i++ {
+	for i := 1; i < len(heap.data); i++ {
 
 		leftChildIndex := heap.getLeftChildIndex(i)
 		rightChildIndex := heap.getRightChildIndex(i)
 
-		if leftChildIndex < len(heap.Data) {
-			if heap.Data[leftChildIndex].priority > heap.Data[i].priority {
-				heap.Data[leftChildIndex], heap.Data[i] = heap.Data[i], heap.Data[leftChildIndex]
+		if leftChildIndex < len(heap.data) {
+			if heap.data[leftChildIndex].priority > heap.data[i].priority {
+				heap.data[leftChildIndex], heap.data[i] = heap.data[i], heap.data[leftChildIndex]
 			}
 		}
 
-		if rightChildIndex < len(heap.Data) {
-			if heap.Data[rightChildIndex].priority > heap.Data[i].priority {
-				heap.Data[rightChildIndex], heap.Data[i] = heap.Data[i], heap.Data[rightChildIndex]
+		if rightChildIndex < len(heap.data) {
+			if heap.data[rightChildIndex].priority > heap.data[i].priority {
+				heap.data[rightChildIndex], heap.data[i] = heap.data[i], heap.data[rightChildIndex]
 			}
 		}
 	}
