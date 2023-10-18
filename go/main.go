@@ -132,4 +132,12 @@ func main() {
 			fmt.Println("no items left")
 		}
 	}
+
+	fmt.Println("Heap sort an unsorted array")
+
+	unsorted := []int{23, 72, 17, 13, 69, 42, 100}
+
+	sorted := heap.HeapSort(unsorted, func(a, b int) bool { return a < b })
+
+	fmt.Println(sorted)
 }

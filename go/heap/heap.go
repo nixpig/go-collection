@@ -85,3 +85,20 @@ func (heap *Heap[T]) RemoveMax() *HeapNode[T] {
 
 	return max
 }
+
+func HeapSort[T any](unsorted []T, comparison func(a, b T) bool) []T {
+	sorted := []T{}
+
+	h := Heap[T]{}
+	h.Sort = comparison
+
+	for _, v := range unsorted {
+		h.Insert(*NewHeapNode(v))
+	}
+
+	for h.GetLength() > 0 {
+		sorted = append(sorted, *h.RemoveMax().GetValue())
+	}
+
+	return sorted
+}

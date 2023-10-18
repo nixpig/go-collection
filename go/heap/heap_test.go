@@ -6,17 +6,6 @@ import (
 	heap "github.com/nixpig/datastructures-the-fun-way/go/heap"
 )
 
-// func removeAndExpect[T any](h *heap.Heap[T], t *testing.T) {
-// 	v := h.RemoveMax()
-// 	r := v.GetValue()
-// 	&r
-// 	fmt.Println(v.GetValue())
-//
-// 	if 1 != 9 {
-// 		t.Errorf("expected %v", v)
-// 	}
-// }
-
 func TestMaxHeap(t *testing.T) {
 	type Task struct {
 		priority     int
