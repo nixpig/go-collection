@@ -32,19 +32,19 @@ I've never written Go or Rust before this, so trying to translate the Python-esq
 
 #### Array Stack
 
-- Go - [test](https://github.com/nixpig/data-structures-the-fun-way/blob/main/go/array-stack/array_stack_test.go) - [solution](https://github.com/nixpig/data-structures-the-fun-way/blob/main/go/array-stack/array_stack.go)
+- Go - [test](go/array-stack/array_stack_test.go) - [solution](go/array-stack/array_stack.go)
 
 ### Queues
 
 #### Array List Queue
 
-- Go - [test](https://github.com/nixpig/data-structures-the-fun-way/blob/main/go/array-queue/array_queue_test.go) - [solution](https://github.com/nixpig/data-structures-the-fun-way/blob/main/go/array-queue/array_queue.go)
+- Go - [test](go/array-queue/array_queue_test.go) - [solution](go/array-queue/array_queue.go)
 
 #### Array Ring Buffer Queue
 
 **Note:** this one actually _isn't_ covered in the book, short of stating that _"Wrapping is a better solution, though it does require us to carefully handle indices being incremented pas the end of the array..."_
 
-- Go - [test](https://github.com/nixpig/data-structures-the-fun-way/blob/main/go/ring-buffer/ring_buffer_test.go) - [solution](https://github.com/nixpig/data-structures-the-fun-way/blob/main/go/array-queue/array_queue_test.go)
+- Go - [test](go/ring-buffer/ring_buffer_test.go) - [solution](go/array-queue/array_queue_test.go)
 
 #### Linked List Queue
 
@@ -52,8 +52,12 @@ I've never written Go or Rust before this, so trying to translate the Python-esq
 
 ## Chapter 5: Binary Search Trees
 
-- Go - [test](https://github.com/nixpig/data-structures-the-fun-way/blob/main/go/binary-search-tree/binary_search_tree_test.go) - [solution](https://github.com/nixpig/data-structures-the-fun-way/blob/main/go/binary-search-tree/binary_search_tree.go)
+- Go - [test](go/binary-search-tree/binary_search_tree_test.go) - [solution](go/binary-search-tree/binary_search_tree.go)
 
 ## Chapter 6: Tries And Adapting Data Structures
 
-- Go - [test](https://github.com/nixpig/data-structures-the-fun-way/blob/main/go/trie/trie_test.go) - [solution](https://github.com/nixpig/data-structures-the-fun-way/blob/main/go/trie/trie.go)
+- Go - [test](go/trie/trie_test.go) - [solution](go/trie/trie.go)
+
+## Chapter 7: Priority Queues And Heaps
+
+- Go - [test](go/heap/heap_test.go) - [solution](go/heap/heap.go)

@@ -1,4 +1,4 @@
-package max_heap
+package heap
 
 import (
 	"math"
@@ -12,6 +12,10 @@ func NewHeapNode[T any](value T) *HeapNode[T] {
 	return &HeapNode[T]{
 		value: value,
 	}
+}
+
+func (n *HeapNode[T]) GetValue() *T {
+	return &n.value
 }
 
 type Heap[T any] struct {
