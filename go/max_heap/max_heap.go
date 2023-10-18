@@ -5,19 +5,18 @@ import (
 )
 
 type HeapNode[T any] struct {
-	priority int
-	aux      T
+	value T
 }
 
-func NewHeapNode[T any](priority int, aux T) *HeapNode[T] {
+func NewHeapNode[T any](value T) *HeapNode[T] {
 	return &HeapNode[T]{
-		priority: priority,
-		aux:      aux,
+		value: value,
 	}
 }
 
 type MaxHeap[T any] struct {
 	data []*HeapNode[T]
+	Sort func(a T, b T) bool
 }
 
 func (heap *MaxHeap[T]) GetLength() int {
@@ -46,7 +45,7 @@ func (heap *MaxHeap[T]) Insert(value HeapNode[T]) {
 	currentIndex := len(heap.data) - 1
 	parentIndex := heap.getParentIndex(currentIndex)
 
-	for parentIndex > 0 && heap.data[parentIndex].priority < heap.data[currentIndex].priority {
+	for parentIndex > 0 && heap.Sort(heap.data[parentIndex].value, heap.data[currentIndex].value) {
 		heap.data[currentIndex], heap.data[parentIndex] = heap.data[parentIndex], heap.data[currentIndex]
 		currentIndex, parentIndex = parentIndex, heap.getParentIndex(parentIndex)
 	}
@@ -68,13 +67,13 @@ func (heap *MaxHeap[T]) RemoveMax() *HeapNode[T] {
 		rightChildIndex := heap.getRightChildIndex(i)
 
 		if leftChildIndex < len(heap.data) {
-			if heap.data[leftChildIndex].priority > heap.data[i].priority {
+			if heap.Sort(heap.data[i].value, heap.data[leftChildIndex].value) {
 				heap.data[leftChildIndex], heap.data[i] = heap.data[i], heap.data[leftChildIndex]
 			}
 		}
 
 		if rightChildIndex < len(heap.data) {
-			if heap.data[rightChildIndex].priority > heap.data[i].priority {
+			if heap.Sort(heap.data[i].value, heap.data[rightChildIndex].value) {
 				heap.data[rightChildIndex], heap.data[i] = heap.data[i], heap.data[rightChildIndex]
 			}
 		}

@@ -7,17 +7,21 @@ import (
 )
 
 func main() {
+	fmt.Println("Max heap of strings sorted alphabetically")
 	stringHeap := max_heap.MaxHeap[string]{}
+	stringHeap.Sort = func(a, b string) bool {
+		return a > b
+	}
 
 	values := []max_heap.HeapNode[string]{
-		*max_heap.NewHeapNode(23, "foo"),
-		*max_heap.NewHeapNode(42, "bar"),
-		*max_heap.NewHeapNode(69, "baz"),
-		*max_heap.NewHeapNode(13, "qux"),
-		*max_heap.NewHeapNode(7, "rot"),
-		*max_heap.NewHeapNode(132, "apple"),
-		*max_heap.NewHeapNode(666, "chimp"),
-		*max_heap.NewHeapNode(500, "cup"),
+		*max_heap.NewHeapNode("foo"),
+		*max_heap.NewHeapNode("bar"),
+		*max_heap.NewHeapNode("baz"),
+		*max_heap.NewHeapNode("qux"),
+		*max_heap.NewHeapNode("rot"),
+		*max_heap.NewHeapNode("apple"),
+		*max_heap.NewHeapNode("chimp"),
+		*max_heap.NewHeapNode("cup"),
 	}
 
 	for _, value := range values {
@@ -34,15 +38,66 @@ func main() {
 
 	}
 
-	mapHeap := max_heap.MaxHeap[map[int]string]{}
+	fmt.Println("---")
+	fmt.Println("Max heap of task structs sorted by priority")
 
-	items := []max_heap.HeapNode[map[int]string]{
-		*max_heap.NewHeapNode(14, map[int]string{23: "foo"}),
-		*max_heap.NewHeapNode(34, map[int]string{42: "apple"}),
-		*max_heap.NewHeapNode(73, map[int]string{12223: "banana"}),
-		*max_heap.NewHeapNode(900, map[int]string{834: "dog"}),
-		*max_heap.NewHeapNode(4, map[int]string{1: "cat"}),
-		*max_heap.NewHeapNode(19, map[int]string{0: "tiger"}),
+	type Task struct {
+		priority     int
+		taskName     string
+		instructions string
+		assignee     string
+		completed    bool
+	}
+
+	mapHeap := max_heap.MaxHeap[Task]{}
+	mapHeap.Sort = func(gt Task, lt Task) bool {
+		return gt.priority > lt.priority
+
+	}
+
+	items := []max_heap.HeapNode[Task]{
+		*max_heap.NewHeapNode(Task{
+			priority:     1,
+			taskName:     "P1 1",
+			instructions: "",
+			assignee:     "James",
+			completed:    false,
+		}),
+		*max_heap.NewHeapNode(Task{
+			priority:     3,
+			taskName:     "P3 1",
+			instructions: "",
+			assignee:     "James",
+			completed:    false,
+		}),
+		*max_heap.NewHeapNode(Task{
+			priority:     3,
+			taskName:     "P3 2",
+			instructions: "",
+			assignee:     "James",
+			completed:    false,
+		}),
+		*max_heap.NewHeapNode(Task{
+			priority:     2,
+			taskName:     "P2 1",
+			instructions: "",
+			assignee:     "James",
+			completed:    false,
+		}),
+		*max_heap.NewHeapNode(Task{
+			priority:     1,
+			taskName:     "P1 2",
+			instructions: "",
+			assignee:     "James",
+			completed:    false,
+		}),
+		*max_heap.NewHeapNode(Task{
+			priority:     4,
+			taskName:     "P4 1",
+			instructions: "",
+			assignee:     "James",
+			completed:    false,
+		}),
 	}
 
 	for _, item := range items {
