@@ -14,28 +14,28 @@ func NewHeapNode[T any](value T) *HeapNode[T] {
 	}
 }
 
-type MaxHeap[T any] struct {
+type Heap[T any] struct {
 	data []*HeapNode[T]
 	Sort func(a T, b T) bool
 }
 
-func (heap *MaxHeap[T]) GetLength() int {
+func (heap *Heap[T]) GetLength() int {
 	return len(heap.data) - 1
 }
 
-func (*MaxHeap[T]) getParentIndex(index int) int {
+func (*Heap[T]) getParentIndex(index int) int {
 	return int(math.Floor(float64(index) / 2))
 }
 
-func (*MaxHeap[T]) getLeftChildIndex(index int) int {
+func (*Heap[T]) getLeftChildIndex(index int) int {
 	return index * 2
 }
 
-func (*MaxHeap[T]) getRightChildIndex(index int) int {
+func (*Heap[T]) getRightChildIndex(index int) int {
 	return index*2 + 1
 }
 
-func (heap *MaxHeap[T]) Insert(value HeapNode[T]) {
+func (heap *Heap[T]) Insert(value HeapNode[T]) {
 	if len(heap.data) == 0 {
 		heap.data = append(heap.data, nil)
 	}
@@ -51,7 +51,7 @@ func (heap *MaxHeap[T]) Insert(value HeapNode[T]) {
 	}
 }
 
-func (heap *MaxHeap[T]) RemoveMax() *HeapNode[T] {
+func (heap *Heap[T]) RemoveMax() *HeapNode[T] {
 	if heap.GetLength() == 0 {
 		return nil
 	}
