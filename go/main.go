@@ -39,7 +39,6 @@ func main() {
 	}
 
 	fmt.Println("---")
-	fmt.Println("Max heap of task structs sorted by priority")
 
 	type Task struct {
 		priority     int
@@ -47,12 +46,6 @@ func main() {
 		instructions string
 		assignee     string
 		completed    bool
-	}
-
-	mapHeap := max_heap.MaxHeap[Task]{}
-	mapHeap.Sort = func(gt Task, lt Task) bool {
-		return gt.priority > lt.priority
-
 	}
 
 	items := []max_heap.HeapNode[Task]{
@@ -100,12 +93,39 @@ func main() {
 		}),
 	}
 
+	fmt.Println("Max heap of task structs sorted by descending priority")
+
+	mapHeap := max_heap.MaxHeap[Task]{}
+	mapHeap.Sort = func(gt Task, lt Task) bool {
+		return gt.priority > lt.priority
+	}
+
 	for _, item := range items {
 		mapHeap.Insert(item)
 	}
 
 	for mapHeap.GetLength() > 0 {
 		got := mapHeap.RemoveMax()
+		if got != nil {
+			fmt.Println("got:", got)
+		} else {
+			fmt.Println("no items left")
+		}
+	}
+
+	fmt.Println("Min heap of tasks structs sorted by ascending priority")
+
+	minHeap := max_heap.MaxHeap[Task]{}
+	minHeap.Sort = func(gt Task, lt Task) bool {
+		return gt.priority < lt.priority
+	}
+
+	for _, item := range items {
+		minHeap.Insert(item)
+	}
+
+	for minHeap.GetLength() > 0 {
+		got := minHeap.RemoveMax()
 		if got != nil {
 			fmt.Println("got:", got)
 		} else {
