@@ -3,7 +3,7 @@ package array_stack_test
 import (
 	"testing"
 
-	array_stack "github.com/nixpig/datastructures-the-fun-way/go/array-stack"
+	array_stack "github.com/nixpig/go-collection/data-structures-algorithms/array-stack"
 )
 
 func popAndAssert[T comparable](stack *array_stack.ArrayStack[T], expectedValue T, t *testing.T) {

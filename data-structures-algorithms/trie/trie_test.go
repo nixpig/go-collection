@@ -3,7 +3,7 @@ package trie_test
 import (
 	"testing"
 
-	"github.com/nixpig/datastructures-the-fun-way/go/trie"
+	"github.com/nixpig/go-collection/data-structures-algorithms/trie"
 )
 
 func assertFound(t *testing.T, trie *trie.Trie, value string, expect bool) {

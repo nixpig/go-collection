@@ -3,7 +3,7 @@ package linked_list_queue_test
 import (
 	"testing"
 
-	linked_list_queue "github.com/nixpig/datastructures-the-fun-way/go/linked-list-queue"
+	linked_list_queue "github.com/nixpig/go-collection/data-structures-algorithms/linked-list-queue"
 )
 
 func TestLinkedListQueue(t *testing.T) {

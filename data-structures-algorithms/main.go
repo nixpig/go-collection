@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	heap "github.com/nixpig/datastructures-the-fun-way/go/heap"
+	heap "github.com/nixpig/go-collection/data-structures-algorithms/heap"
 )
 
 func main() {

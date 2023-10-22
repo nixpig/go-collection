@@ -3,7 +3,7 @@ package ring_buffer_test
 import (
 	"testing"
 
-	ring_buffer "github.com/nixpig/datastructures-the-fun-way/go/ring-buffer"
+	ring_buffer "github.com/nixpig/go-collection/data-structures-algorithms/ring-buffer"
 )
 
 func dequeueAndCheckValue[T comparable](queue *ring_buffer.RingBuffer[T], expectedValue T, t *testing.T) {

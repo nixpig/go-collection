@@ -3,7 +3,7 @@ package array_queue_test
 import (
 	"testing"
 
-	array_queue "github.com/nixpig/datastructures-the-fun-way/go/array-queue"
+	array_queue "github.com/nixpig/go-collection/data-structures-algorithms/array-queue"
 )
 
 func dequeueAndCheckValue[T comparable](queue *array_queue.ArrayQueue[T], expectedValue T, t *testing.T) {

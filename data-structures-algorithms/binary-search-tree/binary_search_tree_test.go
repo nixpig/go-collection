@@ -3,7 +3,7 @@ package binary_search_tree_test
 import (
 	"testing"
 
-	binary_search_tree "github.com/nixpig/datastructures-the-fun-way/go/binary-search-tree"
+	binary_search_tree "github.com/nixpig/go-collection/data-structures-algorithms/binary-search-tree"
 )
 
 func createTree() binary_search_tree.BinarySearchTree {
