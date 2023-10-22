@@ -17,4 +17,4 @@ Various bits 'n' pieces I've built while learning to program in Go. Any feedback
 
 ## Design patterns
 
-- [Dependency injection](design-patterns/dependency_injection)
+- [Dependency injection](design-patterns/dependency-injection)
