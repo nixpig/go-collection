@@ -1,6 +1,6 @@
 # Go collection
 
-Various bits 'n' pieces I've built while learning to program in Go.
+Various bits 'n' pieces I've built while learning to program in Go. Any feedback in issues would be greatly appreciated!
 
 ## Data structures and algorithms
 
