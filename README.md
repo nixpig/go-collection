@@ -14,6 +14,7 @@ Various bits 'n' pieces I've built while learning to program in Go. Any feedback
 - [Binary search tree](data-structures-algorithms/binary-search-tree)
 - [Trie](data-structures-algorithms/trie)
 - [Priority queue (heap)](data-structures-algorithms/heap)
+- [Nearest neighbor search (linear scan)](data-structures-algorithms/nearest-neighbor)
 
 ## Design patterns
 
