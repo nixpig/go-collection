@@ -2,6 +2,10 @@
 
 Various bits 'n' pieces I've built while learning to program in Go. Any feedback in issues would be greatly appreciated!
 
+## Cheatsheet
+
+- [cheatsheet.md](cheatsheet.md)
+
 ## Data structures and algorithms
 
 - [Insertion sort](data-structures-algorithms/insertion_sort)
@@ -15,6 +19,7 @@ Various bits 'n' pieces I've built while learning to program in Go. Any feedback
 - [Trie](data-structures-algorithms/trie)
 - [Priority queue (heap)](data-structures-algorithms/heap)
 - [Nearest neighbor search (linear scan)](data-structures-algorithms/nearest-neighbor)
+- [Grid (WIP)](data-structures-algorithms/grids)
 
 ## Design patterns
 
