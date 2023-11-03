@@ -24,6 +24,12 @@ type GridPoint struct {
 	next *GridPoint
 }
 
+func (g *Grid) Print() {
+	for _, bin := range g.Bins {
+		fmt.Println(bin)
+	}
+}
+
 func (g *Grid) xBinWidth() float64 {
 	return (g.XEnd - g.XStart) / float64(g.NumXBins)
 }
@@ -111,4 +117,8 @@ func approxEqual(x1, y1, x2, y2 float64) bool {
 	}
 
 	return true
+}
+
+func euclidianDistance(x1, y1, x2, y2 float64) float64 {
+	return math.Sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))
 }

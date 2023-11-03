@@ -68,8 +68,13 @@ func main() {
 	ins := grid.Insert(3, 8)
 	fmt.Println("ins:", ins)
 
-	del := grid.Delete(3, 8)
+	var del bool
+
+	del = grid.Delete(3, 8)
 	fmt.Println("del:", del)
 
-	// fmt.Println(grid)
+	del = grid.Delete(3, 9)
+	fmt.Println("del:", del)
+
+	grid.Print()
 }
