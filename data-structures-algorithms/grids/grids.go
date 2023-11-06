@@ -38,31 +38,31 @@ func (g *Grid) yBinWidth() float64 {
 	return (g.YEnd - g.YStart) / float64(g.NumYBins)
 }
 
-func (g *Grid) Get(x, y float64) (*GridPoint, error) {
+func (g *Grid) Get(x, y float64) *GridPoint {
 	xBin := int(math.Floor((x - g.XStart) / g.xBinWidth()))
 	if xBin < 0 || xBin >= g.NumXBins {
-		return nil, fmt.Errorf("'x' position falls outside the grid.")
+		return nil
 	}
 
 	yBin := int(math.Floor((y - g.YStart) / g.yBinWidth()))
 	if yBin < 0 || yBin >= g.NumYBins {
-		return nil, fmt.Errorf("'y' position falls outside the grid.")
+		return nil
 	}
 
 	current := g.Bins[xBin][yBin]
 	if current == nil {
-		return nil, fmt.Errorf("Nothing found at this position.")
+		return nil
 	}
 
 	for current != nil {
 		if approxEqual(x, y, current.x, current.y) {
-			return current, nil
+			return current
 		}
 
 		current = current.next
 	}
 
-	return nil, fmt.Errorf("No item found.")
+	return nil
 
 }
 
