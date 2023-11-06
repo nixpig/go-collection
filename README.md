@@ -20,6 +20,7 @@ Various bits 'n' pieces I've built while learning to program in Go. Any feedback
 - [Priority queue (heap)](data-structures-algorithms/heap)
 - [Nearest neighbor search (linear scan)](data-structures-algorithms/nearest-neighbor)
 - [Grid (WIP)](data-structures-algorithms/grids)
+- [Hash Table](data-structures-algorithms/hash-tables)
 
 ## Design patterns
 
