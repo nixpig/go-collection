@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/nixpig/go-collection/data-structures-algorithms/grids"
+	hashtables "github.com/nixpig/go-collection/data-structures-algorithms/hash-tables"
 )
 
 func main() {
@@ -56,30 +56,53 @@ func main() {
 	// }
 	// fmt.Println("closest point:", closestPoint)
 
-	grid := grids.Grid{
-		NumXBins: 10,
-		NumYBins: 10,
-		XStart:   1,
-		YStart:   1,
-		XEnd:     10,
-		YEnd:     10,
-	}
+	// grid := grids.Grid{
+	// 	NumXBins: 10,
+	// 	NumYBins: 10,
+	// 	XStart:   1,
+	// 	YStart:   1,
+	// 	XEnd:     10,
+	// 	YEnd:     10,
+	// }
+	//
+	// ins := grid.Insert(3, 8)
+	// fmt.Println("inserted?:", ins)
+	//
+	// got := grid.Get(3, 8)
+	// fmt.Println("Got:", got)
+	//
+	// var del bool
+	//
+	// del = grid.Delete(3, 8)
+	// fmt.Println("deleted?:", del)
+	//
+	// del = grid.Delete(3, 8)
+	// fmt.Println("deleted?:", del)
+	//
+	// got = grid.Get(3, 8)
+	// fmt.Println("Got:", got)
 
-	ins := grid.Insert(3, 8)
-	fmt.Println("inserted?:", ins)
+	ht := hashtables.NewHashTable[int]()
 
-	got := grid.Get(3, 8)
-	fmt.Println("Got:", got)
+	ht.Insert(23, 42)
+	ht.Insert(42, 100)
+	ht.Insert(24, 13)
 
-	var del bool
+	res := ht.Lookup(42)
+	fmt.Println("res:", res)
 
-	del = grid.Delete(3, 8)
-	fmt.Println("deleted?:", del)
+	res = ht.Lookup(23)
+	fmt.Println("res:", res)
 
-	del = grid.Delete(3, 8)
-	fmt.Println("deleted?:", del)
+	deleted := ht.Remove(42)
+	fmt.Println("deleted:", deleted)
+	deleted = ht.Remove(42)
+	fmt.Println("deleted:", deleted)
 
-	got = grid.Get(3, 8)
-	fmt.Println("Got:", got)
+	res = ht.Lookup(42)
+	fmt.Println("res:", res)
+
+	res = ht.Lookup(23)
+	fmt.Println("res:", res)
 
 }
