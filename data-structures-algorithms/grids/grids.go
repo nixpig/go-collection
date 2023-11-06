@@ -38,18 +38,42 @@ func (g *Grid) yBinWidth() float64 {
 	return (g.YEnd - g.YStart) / float64(g.NumYBins)
 }
 
+func (g *Grid) Get(x, y float64) (*GridPoint, error) {
+	xBin := int(math.Floor((x - g.XStart) / g.xBinWidth()))
+	if xBin < 0 || xBin >= g.NumXBins {
+		return nil, fmt.Errorf("'x' position falls outside the grid.")
+	}
+
+	yBin := int(math.Floor((y - g.YStart) / g.yBinWidth()))
+	if yBin < 0 || yBin >= g.NumYBins {
+		return nil, fmt.Errorf("'y' position falls outside the grid.")
+	}
+
+	current := g.Bins[xBin][yBin]
+	if current == nil {
+		return nil, fmt.Errorf("Nothing found at this position.")
+	}
+
+	for current != nil {
+		if approxEqual(x, y, current.x, current.y) {
+			return current, nil
+		}
+
+		current = current.next
+	}
+
+	return nil, fmt.Errorf("No item found.")
+
+}
+
 func (g *Grid) Insert(x, y float64) bool {
 	xBin := int(math.Floor((x - g.XStart) / g.xBinWidth()))
-	fmt.Println("ins | xBin:", xBin)
 	if xBin < 0 || xBin >= (g.NumXBins) {
-		fmt.Println("ins | xBin out of bounds")
 		return false
 	}
 
 	yBin := int(math.Floor((y - g.YStart) / g.yBinWidth()))
-	fmt.Println("ins | yBin:", yBin)
 	if yBin < 0 || yBin >= (g.NumYBins) {
-		fmt.Println("ins | yBin out of bounds")
 		return false
 	}
 
@@ -64,16 +88,12 @@ func (g *Grid) Insert(x, y float64) bool {
 
 func (g *Grid) Delete(x, y float64) bool {
 	xBin := int(math.Floor((x - g.XStart) / g.xBinWidth()))
-	fmt.Println("del | xBin:", xBin)
 	if xBin < 0 || xBin >= g.NumXBins {
-		fmt.Println("del | xBin out of bounds")
 		return false
 	}
 
 	yBin := int(math.Floor((y - g.YStart) / g.yBinWidth()))
-	fmt.Println("del | yBin:", yBin)
 	if yBin < 0 || yBin >= g.NumYBins {
-		fmt.Println("del | Bin out of bounds")
 		return false
 	}
 
@@ -82,16 +102,13 @@ func (g *Grid) Delete(x, y float64) bool {
 		return false
 	}
 
-	previous := &GridPoint{}
+	var previous *GridPoint
 
 	for current != nil {
 		if approxEqual(x, y, current.x, current.y) {
-			fmt.Println("del | is approx. equal: ", x, y, current.x, current.y)
 			if previous == nil {
-				fmt.Println("del | previous is nil")
 				g.Bins[xBin][yBin] = current.next
 			} else {
-				fmt.Println("del | set prev.next to current.next")
 				previous.next = current.next
 			}
 

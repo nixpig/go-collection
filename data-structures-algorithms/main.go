@@ -66,15 +66,26 @@ func main() {
 	}
 
 	ins := grid.Insert(3, 8)
-	fmt.Println("ins:", ins)
+	fmt.Println("inserted?:", ins)
+
+	got, err := grid.Get(3, 8)
+	if err != nil {
+		fmt.Println("Not got:", err)
+	}
+	fmt.Println("Got:", got)
 
 	var del bool
 
 	del = grid.Delete(3, 8)
-	fmt.Println("del:", del)
+	fmt.Println("deleted?:", del)
 
-	del = grid.Delete(3, 9)
-	fmt.Println("del:", del)
+	del = grid.Delete(3, 8)
+	fmt.Println("deleted?:", del)
 
-	grid.Print()
+	got, err = grid.Get(3, 8)
+	if err != nil {
+		fmt.Println("Not got:", err)
+	}
+	fmt.Println("Got:", got)
+
 }
